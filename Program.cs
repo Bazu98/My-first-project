@@ -16,12 +16,12 @@ namespace My_first_project
 
 
 
-            //FileCreator(args);
+            FileCreator(args);
             Fibonacci(7);
             int[] arr = { 55, 33, 10, 15 };
-            Console.WriteLine(String.Join(" ", Sort(arr)));
             isStrict(arr);
-            ConvertBinary();
+            SortList(arr);
+            Console.WriteLine(ConvertBinary(3));
             int[] arr1 = { 1, 2, 3, 4, 2, 3 };
             int[] arr3 = { 88, 129, 33, 45, 1, 2, 33, 88, 2 };
             Dictionary<int,int> dict = Counter(arr1);
@@ -79,21 +79,19 @@ namespace My_first_project
 
     
 
-       
-
-        static void ConvertBinary()
+        public static void SortList(int [] array)
         {
-            string result = "";
-            int r, n;
-            Console.WriteLine("Enter decimal number");
-            n = Convert.ToInt32(Console.ReadLine());
-            while(n > 0)
+            IEnumerable<int> it = from number in array orderby number select number;
+            foreach(int x in it)
             {
-                r = n % 2;
-                result = Convert.ToString(r) + result;
-                n = n / 2;
+            Console.WriteLine(x);
             }
-            Console.WriteLine("Binary equivalent {0}",result);
+             
+        }
+
+        public static string ConvertBinary(int N)
+        {
+            return Convert.ToString(N, 2);
         }
 
 
@@ -130,30 +128,6 @@ namespace My_first_project
             return array2;
 
         }
-
-        
-
-        public static int[] Sort(int[] arr)
-        {
-            for (int i = 1; i < arr.Length; i++)
-            {
-                for (int j = i - 1, tmp = i; j >= 0; j--, tmp--)
-                {
-                    if (arr[j] > arr[tmp])
-                    {
-                        int temp = arr[tmp];
-                        arr[tmp] = arr[j];
-                        arr[j] = temp;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            return arr;
-        }
-
 
         public static int Fibonacci(int n)
         {
